@@ -54,31 +54,31 @@ APACHE XAMPP
 127.0.0.1/PASTA/PAGINA.HTML
 
 <html>
-
-<head> <title> Cadastro de Alunos </title> </head>
+<head>
+    <title>Cadastro de Alunos</title>
+</head>
 <body>
-<form name="frmCadastro! Method="Post" Action="Cadastro.php"/>
-Nome: <input type= "text" Id="txtnome" Name="TxtNome" /> <br/>
-Endereço:  <input type= "text" Id="txtEndereço" Name="txtEndereço"/> <br/>
-CEP:  <input type= "text" Id="txtCEP" Name="txtCEP" /> <br/>
-Telefone:  <input type= "text" Id="txtTelefone" Name="txtTelefone" /> <br/>
-Idade:  <input type= "text" /> <br/>
-Email:  <input type= "text" /> <br/>
-<input type = "submit" Value= "Gravar"/>
-<input type = "button" Value= "Listar"/>
-</form>
+    <form name="frmCadastro" method="POST" action="cadastro.php">
+        Nome: <input type="text" id="txtNome" name="txtNome" /> <br/>
+        Endereço: <input type="text" id="txtEndereco" name="txtEndereco"/> <br/>
+        CEP: <input type="text" id="txtCEP" name="txtCEP" /> <br/>
+        Telefone: <input type="text" id="txtTelefone" name="txtTelefone" /> <br/>
+        Idade: <input type="text" id="txtIdade" name="txtIdade" /> <br/>
+        Email: <input type="text" id="txtEmail" name="txtEmail" /> <br/>
+        <input type="submit" value="Gravar"/>
+        <input type="button" value="Listar"/>
+    </form>
 </body>
-
 </html>
 
 http://10.90.36.67/CADASTRO/cadastro.php
 
 <?php
 
-$nome = $_POST['txtNome'];
-$endereco = $_POST['txtEndereço'];
-$telefone = $_POST['txtTelefone'];
-$email = $_POST['txtEmail'];
+$nome = $_POST['txtNome'] ?? '';
+$endereco = $_POST['txtEndereco'] ?? '';
+$telefone = $_POST['txtTelefone'] ?? '';
+$email = $_POST['txtEmail'] ?? '';
 
 echo "Dados digitados: <br/> 
 Nome: $nome <br/> 
@@ -86,5 +86,6 @@ Endereço: $endereco <br/>
 Telefone: $telefone <br/> 
 Email: $email";
 ?>
+
 
 
