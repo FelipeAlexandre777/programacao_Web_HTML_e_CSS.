@@ -54,6 +54,7 @@ APACHE XAMPP
 127.0.0.1/PASTA/PAGINA.HTML
 
 <html>
+
 <head> <title> Cadastro de Alunos </title> </head>
 <body>
 <form name="frmCadastro! Method="Post" Action="Cadastro.php"/>
@@ -63,9 +64,24 @@ CEP:  <input type= "text" Id="txtCEP" Name="txtCEP" /> <br/>
 Telefone:  <input type= "text" Id="txtTelefone" Name="txtTelefone" /> <br/>
 Idade:  <input type= "text" /> <br/>
 Email:  <input type= "text" /> <br/>
-<input type = "button" Value= "Gravar"/>
+<input type = "submit" Value= "Gravar"/>
 <input type = "button" Value= "Listar"/>
 </form>
 </body>
+
 </html>
+
+<?php
+
+$nome = $_POST['txtNome'];
+$endereco = $_POST['txtEndereço'];
+$telefone = $_POST['txtTelefone'];
+$email = $_POST['txtEmail'];
+
+echo "Dados digitados: <br/> 
+Nome: $nome <br/> 
+Endereço: $endereco <br/> 
+Telefone: $telefone <br/> 
+Email: $email";
+?>
 
