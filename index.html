@@ -54,10 +54,11 @@ APACHE XAMPP
 127.0.0.1/PASTA/PAGINA.HTML
 
 <html>
-<head>
-    <title>Cadastro de Alunos</title>
-</head>
+//index.html
+
+<head> <title>Cadastro de Alunos</title> </head>
 <body>
+  
     <form name="frmCadastro" method="POST" action="cadastro.php">
         Nome: <input type="text" id="txtNome" name="txtNome" /> <br/>
         Endereço: <input type="text" id="txtEndereco" name="txtEndereco"/> <br/>
@@ -74,18 +75,21 @@ APACHE XAMPP
 http://10.90.36.67/CADASTRO/cadastro.php
 
 <?php
+// cadastro.php
+include 'conexão.php'
+$nome = $_POST['txtNome'];
+$endereco = $_POST['txtEndereco'];
+$telefone = $_POST['txtTelefone'];
+$email = $_POST['txtEmail'];
 
-$nome = $_POST['txtNome'] ?? '';
-$endereco = $_POST['txtEndereco'] ?? '';
-$telefone = $_POST['txtTelefone'] ?? '';
-$email = $_POST['txtEmail'] ?? '';
+$SQL= "insert into academico.alunos (nome,endereço, telefone, email)
+Values ('$Nome','$Endereço','$Fone','$Email')";
 
-echo "Dados digitados: <br/> 
-Nome: $nome <br/> 
-Endereço: $endereco <br/> 
-Telefone: $telefone <br/> 
-Email: $email";
+$result = pg_query ($Conexão, $Query);
+if(!$result)
+Echo "erro!";
 ?>
+
 
 <?php
 $usuario = "Aula";
@@ -95,5 +99,6 @@ $banco = "Aula";
 $conexao = new PDO("pgsql:host=$ip;dbname=$banco", $usuario, $senha);
 $conexão = pg-connect ("host= $ip dbname + $banco user=$usuario password=$senha");
 ?>
+
 
 
