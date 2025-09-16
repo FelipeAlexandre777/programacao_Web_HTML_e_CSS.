@@ -1,0 +1,80 @@
+<html>
+<head>
+    <title>Cadastro de Alunos</title>
+</head>
+<body>
+    <form name="frmCadastro" method="POST" action="cadastro.php">
+        Nome: <input type="text" id="txtNome" name="txtNome" /> <br/>
+        Endereço: <input type="text" id="txtEndereco" name="txtEndereco"/> <br/>
+        CEP: <input type="text" id="txtCEP" name="txtCEP" /> <br/>
+        Telefone: <input type="text" id="txtTelefone" name="txtTelefone" /> <br/>
+        Idade: <input type="text" id="txtIdade" name="txtIdade" /> <br/>
+        Email: <input type="text" id="txtEmail" name="txtEmail" /> <br/>
+        <input type="submit" value="Gravar"/>
+        <input type="button" value="Listar" onclick="window.location.href='listar.php';"/>
+    </form>
+</body>
+</html>
+
+
+<?php
+// cadastro.php
+
+include 'conexao.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Coletando dados do formulário
+    $nome = $_POST['txtNome'];
+    $endereco = $_POST['txtEndereco'];
+    $telefone = $_POST['txtTelefone'];
+    $email = $_POST['txtEmail'];
+
+    try {
+        // Preparando a consulta SQL com parâmetros
+        $SQL = "INSERT INTO academico.alunos (nome, endereco, telefone, email) 
+                VALUES (:nome, :endereco, :telefone, :email)";
+        
+        // Preparando a execução da query
+        $stmt = $conexao->prepare($SQL);
+
+        // Bind das variáveis
+        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':endereco', $endereco);
+        $stmt->bindParam(':telefone', $telefone);
+        $stmt->bindParam(':email', $email);
+
+        // Executando a consulta
+        $stmt->execute();
+        
+        echo "Cadastro realizado com sucesso!";
+    } catch (PDOException $e) {
+        // Tratando erros
+        echo "Erro: " . $e->getMessage();
+    }
+}
+?>
+
+
+<?php
+// conexao.php
+
+$host = '10.90.36.67';
+$porta = '5432';
+$db = 'aula';
+$usuario = 'aula';
+$senha = 'aula';
+
+try {
+    // Conexão com o PostgreSQL usando PDO
+    $dsn = "pgsql:host=$host;port=$porta;dbname=$db";
+    $conexao = new PDO($dsn, $usuario, $senha);
+    
+    // Configuração para lançar exceções em caso de erro
+    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    //echo "Conexão bem-sucedida!"; // Pode remover essa linha em produção
+} catch (PDOException $e) {
+    echo "Erro de conexão: " . $e->getMessage();
+    die();
+}
+?>
