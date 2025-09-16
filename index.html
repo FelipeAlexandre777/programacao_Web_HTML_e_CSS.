@@ -92,34 +92,29 @@ Echo "erro!";
 
 
 <?php
-// conexao.php
 
+// conexao.php
 $host = '10.90.36.67';
 $porta = '5432';
 $db = 'aula';
 $usuario = 'aula';
 $senha = 'aula';
 $conexao = '';
-// try {
-// $conexao = new PDO("pqsql:host=$host;port t=$porta
-
-
-
-//try (
-
-Sconevao = new new PD0("pgsql:host=$host;port=Sporta;dbname=Sdb", Susuario, Ssenha); Sconexao->setAttribute (PDO::ATTR ERRMODE, PDO:: ERRMODE EXCEPTION);
-
-catch (PDOException Se)
-
-echo "Erro de conexão:
-
-die():
-
-Se->getMessage();
-
-conexao pg connect("hast Shost duname-Sdb user Susuario password-Ssenha"):
-
-f(ISconexao)
-
-die("Erro na conexão"):
+try {
+    // Create the PDO connection string
+    $dsn = "pgsql:host=$host;port=$porta;dbname=$db";
+    
+    // Create the PDO object
+    $conexao = new PDO($dsn, $usuario, $senha);
+    
+    // Set the PDO error mode to exception
+    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    echo "Conexão bem-sucedida!";
+} catch (PDOException $e) {
+    // Catch any exceptions and display the error message
+    echo "Erro de conexão: " . $e->getMessage();
+    die();
+}
+?>
 
