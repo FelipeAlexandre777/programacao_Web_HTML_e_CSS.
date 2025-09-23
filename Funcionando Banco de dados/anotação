@@ -8,3 +8,5 @@ sql
 "C:\xampp\htdocs\cadastro\conexao.php"
 "C:\xampp\htdocs\cadastro\index.html"
 "C:\xampp\htdocs\cadastro\listar.php"
+
+http://localhost/phpmyadmin/index.php?route=/sql&db=aula&table=alunos&pos=0
