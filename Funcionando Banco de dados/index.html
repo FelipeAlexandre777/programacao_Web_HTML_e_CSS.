@@ -2,41 +2,42 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Aluno</title>
 </head>
 <body>
-    <h1>Cadastro de Aluno</h1>
 
     <form method="POST" action="cadastro.php">
-      
+        <h1>Cadastro de Aluno</h1>
+
         <label for="txtNome">Nome:</label>
         <input type="text" id="txtNome" name="txtNome" required><br>
-      
+
+        <label for="txtEmail">Email:</label>
+        <input type="email" id="txtEmail" name="txtEmail" required><br>
+
+        <label for="txtTelefone">Telefone:</label>
+        <input type="tel" id="txtTelefone" name="txtTelefone" required><br>
+
         <label for="txtCEP">CEP:</label>
         <input type="text" id="txtCEP" name="txtCEP" required><br>
 
         <label for="txtEndereço">Endereço:</label>
         <input type="text" id="txtEndereço" name="txtEndereço" required><br>
-      
+
         <label for="txtBairro">Bairro:</label>
         <input type="text" id="txtBairro" name="txtBairro" required><br>
 
-        <label for="txtEstado">Estado:</label>
-        <input type="text" id="txtEstado" name="txtEstado" required><br>
-      
         <label for="txtCidade">Cidade:</label>
         <input type="text" id="txtCidade" name="txtCidade" required><br>
-      
-        <label for="txtTelefone">Telefone:</label>
-        <input type="tel" id="txtTelefone" name="txtTelefone" required><br>
 
-        <label for="txtEmail">Email:</label>
-        <input type="email" id="txtEmail" name="txtEmail" required><br>
+        <label for="txtEstado">Estado:</label>
+        <input type="text" id="txtEstado" name="txtEstado" required><br>
 
         <input type="submit" value="Gravar">
-    </form>
+        <input type="submit" value="Listar">
+        <form method="POST" action="listar.php">
+    </form>    
 
-    <p><a href="listar.php">lista</a></p>
 </body>
 </html>
-
