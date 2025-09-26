@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Aluno</title>
+    <script>
+        function limpaCamposEndereco() {
+            document.getElementById('txtEndereço').value = "";
+            document.getElementById('txtBairro').value = "";
+            document.getElementById('txtCidade').value = "";
+            document.getElementById('txtEstado').value = "";
+        }
+
+        function buscarCEP() {
+            const cep = document.getElementById('txtCEP').value.replace(/\D/g, '');
+
+            if (cep.length !== 8) {
+                limpaCamposEndereco();
+                return;
+            }
+
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then(response => response.json())
+                .then(dados => {
+                    if ("erro" in dados) {
+                        alert("CEP não encontrado.");
+                        limpaCamposEndereco();
+                        return;
+                    }
+
+                    document.getElementById('txtEndereço').value = dados.logradouro || '';
+                    document.getElementById('txtBairro').value = dados.bairro || '';
+                    document.getElementById('txtCidade').value = dados.localidade || '';
+                    document.getElementById('txtEstado').value = dados.uf || '';
+                })
+                .catch(error => {
+                    alert("Erro ao buscar o CEP.");
+                    limpaCamposEndereco();
+                    console.error(error);
+                });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('txtCEP').addEventListener('blur', buscarCEP);
+        });
+    </script>
+</head>
+<body>
+
+    <form method="POST" action="cadastro.php">
+        <h1>Cadastro de Aluno</h1>
+
+        <label for="txtNome">Nome:</label>
+        <input type="text" id="txtNome" name="txtNome" required><br>
+
+        <label for="txtEmail">Email:</label>
+        <input type="email" id="txtEmail" name="txtEmail" required><br>
+
+        <label for="txtTelefone">Telefone:</label>
+        <input type="tel" id="txtTelefone" name="txtTelefone" required><br>
+
+        <label for="txtCEP">CEP:</label>
+        <input type="text" id="txtCEP" name="txtCEP" required><br>
+
+        <label for="txtEndereço">Endereço:</label>
+        <input type="text" id="txtEndereço" name="txtEndereço" required><br>
+
+        <label for="txtBairro">Bairro:</label>
+        <input type="text" id="txtBairro" name="txtBairro" required><br>
+
+        <label for="txtCidade">Cidade:</label>
+        <input type="text" id="txtCidade" name="txtCidade" required><br>
+
+        <label for="txtEstado">Estado:</label>
+        <input type="text" id="txtEstado" name="txtEstado" required><br>
+
+        <input type="submit" value="Gravar">
+    </form>
+
+    <form method="POST" action="listar.php">
+        <input type="submit" value="Listar">
+    </form>    
+
+</body>
+</html>
