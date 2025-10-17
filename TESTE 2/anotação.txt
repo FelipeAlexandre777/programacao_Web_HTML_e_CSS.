@@ -88,3 +88,4 @@ return r.getInt("id");
 private String cep, endereco, cidade, estado;
 3) criar os getter/setter
 
+ao invés do LIMIT 5, where C.cep = ?
