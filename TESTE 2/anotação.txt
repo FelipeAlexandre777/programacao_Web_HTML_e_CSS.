@@ -9,4 +9,6 @@ no arquivo WEB.xml, dentro de WEB-INF, acrescentar a configuracao:
 
 1) Criar um novo pacote: banco;
 2) Criar uma nova classe java normal Conexao;
-3) Criar um método do tipo Connection cujo nome é: obterConexao(
+3) Criar um método do tipo Connection cujo nome é: obterConexao()
+
+importar java.sql.Connection
