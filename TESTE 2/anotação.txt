@@ -15,3 +15,21 @@ importar java.sql.Connection
 
 importar java.sql.DriverManager
 
+
+    public Connection obterConexao(){
+        String usuario="aula",senha="aula",
+                url="jdbc://postgresql/10.90.24.54/aula";
+    
+        try{
+            Class.forName("org.postgresql.Driver");
+            Connection c = DriverManager.getConnection(url, usuario,senha);
+            return c;
+        }catch (SQLException e){
+            System.out.println("Erro: "+e.getMessage());
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, e);
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Erro: "+ex.getMessage());
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
