@@ -36,3 +36,7 @@ importar java.sql.DriverManager
 
 1) Na classe Aluno, acrescentar os atributos: cep, cidade, estado;
 2) já criar os GETTER e SETTER
+
+String SQL = "INSERT INTO academico.alunos (nome, cpf, endereco, email, cep, cidade, estado) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        String SQL="INSERT INTO academico.alunos (nome,  cpf, endereco, email, cep, cidade, estado) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id ";
