@@ -40,3 +40,42 @@ importar java.sql.DriverManager
 String SQL = "INSERT INTO academico.alunos (nome, cpf, endereco, email, cep, cidade, estado) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         String SQL="INSERT INTO academico.alunos (nome,  cpf, endereco, email, cep, cidade, estado) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id ";
+
+
+
+ public List<Aluno> listarAlunosCadastrados(){
+        List<Aluno> lista = new ArrayList<Aluno>();
+        Conexao c = new Conexao();
+        Connection con = c.obterConexao();
+        String SQL=  "SELECT * FROM academico.alunos ORDER BY id DESC";
+    
+    }
+
+
+    public List<Aluno> listarAlunosCadastrados(){
+        List<Aluno> lista = new ArrayList<Aluno>();
+        
+    
+    }
+
+return r.getInt("id");
+
+    public int inserirAluno(Aluno dados){
+        Conexao c = new Conexao();
+        Connection con = c.obterConexao();
+        String SQL="INSERT INTO academico.alunos (nome,  cpf, endereco, email, cep, cidade, estado) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id ";
+        PreparedStatement p = con.prepareStatement(SQL);
+        p.setString(1, dados.getNome() );
+        p.setString(2, dados.getCpf());
+        p.setString(3, dados.getEndereco());
+        p.setString(4, dados.getEmail());
+        p.setString(5, dados.getCep());
+        p.setString(6, dados.getCidade());
+        p.setString(7, dados.getEstado());
+        ResultSet r = p.executeQuery();
+        if(r.next()){
+            con.close();
+            return r.getString("id");
+        }
+        con.close();
+    }
