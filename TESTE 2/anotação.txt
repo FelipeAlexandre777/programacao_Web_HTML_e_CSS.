@@ -33,3 +33,6 @@ importar java.sql.DriverManager
         }
         return null;
     }
+
+1) Na classe Aluno, acrescentar os atributos: cep, cidade, estado;
+2) já criar os GETTER e SETTER
