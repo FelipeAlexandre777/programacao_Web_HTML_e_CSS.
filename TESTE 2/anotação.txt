@@ -79,3 +79,12 @@ return r.getInt("id");
         }
         con.close();
     }
+
+
+ select * from academico.ceps C JOIN academico.cidades  CI on c.id_cidade = CI.id_cidade JOIN academico.estados E ON CI.id_estado = E.id_estado limit 5;
+
+1) criar uma classe java normal DadosCEP;
+2) criar os atributos cep, endereco, cidade, estado:
+private String cep, endereco, cidade, estado;
+3) criar os getter/setter
+
