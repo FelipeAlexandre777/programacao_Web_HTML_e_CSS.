@@ -4,4 +4,9 @@ no arquivo WEB.xml, dentro de WEB-INF, acrescentar a configuracao:
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.html</url-pattern>
+
     </servlet-mapping>  
+
+1) Criar um novo pacote: banco;
+2) Criar uma nova classe java normal Conexao;
+3) Criar um método do tipo Connection cujo nome é: obterConexao(
