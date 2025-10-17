@@ -1,0 +1,7 @@
+xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+
+no arquivo WEB.xml, dentro de WEB-INF, acrescentar a configuracao:
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.html</url-pattern>
+    </servlet-mapping>  
