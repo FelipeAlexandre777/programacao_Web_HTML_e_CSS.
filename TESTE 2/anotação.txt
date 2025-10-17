@@ -12,3 +12,6 @@ no arquivo WEB.xml, dentro de WEB-INF, acrescentar a configuracao:
 3) Criar um método do tipo Connection cujo nome é: obterConexao()
 
 importar java.sql.Connection
+
+importar java.sql.DriverManager
+
